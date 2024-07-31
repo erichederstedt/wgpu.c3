@@ -1,0 +1,35 @@
+{
+  "langrev": "1",
+  "warnings": [ "no-unused" ],
+
+  "dependency-search-paths": [ "lib" ],
+  "dependencies": [ ],
+
+  "linked-libraries": [ ],
+  "linker-search-paths": [ "../../lib", "../core" ],
+
+  "authors": [ "Eric Hederstedt <eric.jonsson.hederstedt@gmail.com>" ],
+  "version": "0.1.0",
+  "sources": [ "src/**", "../core/glfw.c3", "../../wgpu.c3" ],
+  "output": "build",
+
+  "targets": {
+    "win32": {
+      "type": "executable",
+      "linked-libraries-add": [ "Gdi32.lib", "d3dcompiler.lib", "Advapi32.lib", "Userenv.lib", "Bcrypt.lib", "Opengl32.lib", "wgpu_native.lib", "glfw3.lib" ],
+      "target": "windows-x64",
+      "features": ["PLATFORM_WIN32"]
+    },
+    "web": {
+      "type": "executable",
+      "link-libc": false,
+      "no-entry": true,
+      "strip-unused": true,
+      "target": "wasm32",
+      "features": ["PLATFORM_WEB"]
+    }
+  },
+
+  "cpu": "generic",
+  "opt": "O0"
+}
